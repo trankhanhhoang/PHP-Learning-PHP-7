@@ -1,0 +1,14 @@
+/*table {
+    background: maroon; // Цвет фона ячеек
+    color: white; // Цвет текста 
+   }
+   td {
+    background: navy; // Цвет фона ячеек
+}*/
+.even {
+    background: white; 
+}
+
+.odd {
+    background: white;
+}
