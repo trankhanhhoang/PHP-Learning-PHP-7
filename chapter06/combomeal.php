@@ -1,5 +1,7 @@
 <?php
-require_once 'entree.php';
+namespace chapter06;
+// TODO error use namespace
+use chapter06\Entree;
 
 class ComboMeal extends Entree {
 
