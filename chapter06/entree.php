@@ -1,5 +1,4 @@
 <?php
-namespace chapter06;
 
 class Entree {
     private string $name;
