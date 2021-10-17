@@ -8,7 +8,7 @@
 <body>
     <b>
         <?php
-        print "Hello, World";
+        print "Hello, World!";
         ?>
     </b>
 </body>
