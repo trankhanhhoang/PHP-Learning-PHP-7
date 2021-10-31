@@ -12,4 +12,14 @@ $tax = $food  * $tax_rate;
 
 $total = $food + $tip +$tax;
 
+printf("Товар: % 20s ,", 'Гамбургер');
+printf("Цена: % 5.2f ", $hamburger);
+printf("Количество: % 3d", 2);
+print "\n";
+
+printf("Товар: % 20s ,", 'Коктель');
+printf("Цена: % 5.2f ", $shake);
+printf("Количество: % 3d", 1);
+print "\n";
+
 print "Стоимость трапезы = " . ($total);
