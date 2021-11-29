@@ -9,3 +9,11 @@ $cities = array('Нью-Йорк' => 8175133,
                 'Сан-Диего, шт. Калифорния' => 1307402,
                 'Даллас, шт Техас' => 1197816,
                 'Сан-Хосе, шт. Калифония' => 945942);
+$count_people = 0;
+print('<table>'."\n");
+foreach ($cities as $city => $count){
+    print ("<tr><td>$city</td><td>$count</td></tr>\n");
+    $count_people += $count;
+}
+print("<tr><td>ALL</td><td>$count_people</td></tr>\n");
+print('</table>');
