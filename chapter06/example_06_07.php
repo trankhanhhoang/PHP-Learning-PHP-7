@@ -4,12 +4,12 @@ class Entree {
     public $name;
     public $ingredients = array();
 
-    public function __construct($name, $ingredients){
-        if (! is_array($ingredients)){
+    public function __construct($name, $entrees){
+        if (! is_array($entrees)){
             throw new Exception('$ingredients must be an array');
         }
         $this->name = $name;
-        $this->ingredients = $ingredients;
+        $this->ingredients = $entrees;
     }
 
     public function hasIngredient($ingredient){
