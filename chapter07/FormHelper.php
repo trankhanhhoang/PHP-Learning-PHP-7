@@ -12,5 +12,47 @@ class FormHelper
         }
     }
 
+    function input($type, $attributes = array(), $isMultiple = false) {
+        $attributes['type'] = $type;
+        if (($type == 'radio') || ($type == 'checkbox')) {
+            if ($this->isOptionSelected($attributes['name'] ?? null, $attributes['value'] ?? null)) {
+                $attributes['checked'] = true;
+            }
+        }
+        return $this->tag('input', $attributes, $isMultiple);
+    }
 
+    public function select($options, $attributes = array()){
+        $multiple = $attributes['multiple'] ?? false;
+        return
+            $this->start('select', $attributes, $multiple) .
+            $this->options($attributes['name'] ?? null, $options) .
+            $this->end('select');
+    }
+
+    public function textarea($attributes = array()) {
+        $name = $attributes['name'] ?? null;
+        $value = $attributes['value'] ?? '';
+        return
+            $this->start('textarea', $attributes) .
+            htmlentities($value) .
+            $this->end('textarea');
+    }
+
+    public function tag($tag, $attributes = array(), $isMultiple = false) {
+        return "<$tag {$this->attributes($attributes, $isMultiple)} />";
+    }
+
+    public function start($tag, $attributes = array(), $isMultiple = false) {
+        // Дескрипторы <select> и <textarea> не получают аттрибут value
+        $valueAttribute = (! (($tag == 'select') || ($tag == 'textarea')));
+        $attrs = $this->attributes($attributes, $isMultiple, $valueAttribute);
+        return "<$tag $attrs>";
+    }
+
+    public function end($tag) {
+        return "</$tag>";
+    }
+
+    protected function
 }
