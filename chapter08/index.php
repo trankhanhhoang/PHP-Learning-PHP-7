@@ -92,18 +92,3 @@ function process_form($input){
         print " Couldn't add your dish to the database.";
     }
 }
-?>
-<form method="POST" action ="<?= form->encode($_SERVER['PHP_SELF']) ?>">
-<table>
-    <?php if ($errors) { ?>
-    <tr>
-        <td>You need to correct the following errors:</td>
-        <td><ul>
-            <?php foreach ($errors as $error) { ?>
-                <li><?= $form->encode($error) ?></li>
-            <?php } ?>
-        </ul></td>
-    </tr>
-    <?php } ?>
-
-</table>
