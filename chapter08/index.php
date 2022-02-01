@@ -1,12 +1,12 @@
 <?php
 // Пример 8.28. Программа для ввода записей в таблицу dishes базы данных
-
+//phpinfo();
 // загрузить вспомогательный класс для составления форм
 require 'FormHelper.php';
 
 // подключиться к базе данных
 try {
-    $db = new PDO('mysql:host=localhost;dbname=test', 'root', '12345');
+    $db = new PDO('mysql:host=localhost:33060;dbname=test', 'root', '12345');
 } catch (PDOException $e){
     print "Can't connect: " . $e->getMessage();
     exit;
@@ -81,14 +81,14 @@ function process_form($input){
     try {
         $stmt = $db->prepare('insert into dishes (dish_name,
                                                         price,
-                                                        is_spicy
+                                                        is_spicy)
                                                         values (?,?,?)');
         $stmt->execute(array($input['dish_name'],
                             $input['price'],
                             $is_spicy));
         // сообщить пользователю о вводе блюда в базу данных
-        print 'Added ' . htmlentities($input['dish_name']) . 'to the database.';
+        print 'Добавили блюдо "' . htmlentities($input['dish_name']) . '" в базу данных.';
     } catch (PDOException $e){
-        print " Couldn't add your dish to the database.";
+        print " Couldn't add your dish to the database: " . $e->getMessage();
     }
 }

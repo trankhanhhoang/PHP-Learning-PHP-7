@@ -1,4 +1,4 @@
-<form method="POST" action ="<?= form->encode($_SERVER['PHP_SELF']) ?>">
+<form method="POST" action ="<?= $form->encode($_SERVER['PHP_SELF']) ?>">
     <table>
         <?php if ($errors) { ?>
             <tr>
@@ -12,17 +12,17 @@
         <?php } ?>
 
         <tr>
-            <td>Dish Name:</td>
+            <td>Название блюда:</td>
             <td><?= $form->input('text', ['name' => 'dish_name']) ?></td>
         </tr>
 
         <tr>
-            <td>Price:</td>
+            <td>Цена:</td>
             <td><?= $form->input('text', ['name' => 'price']) ?></td>
         </tr>
 
         <tr>
-            <td>Spicy:</td>
+            <td>Острый:</td>
             <td><?= $form->input('checkbox', ['name' => 'is_spicy',
                     'value' => 'yes'])?>Yes</td>
         </tr>
