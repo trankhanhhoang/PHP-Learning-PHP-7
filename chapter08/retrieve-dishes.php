@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($errors){
         show_form($errors);
     } else {
+        show_form();
         // Переданные данные из формы достоверны, обработать их
         process_form($input);
     }
@@ -70,7 +71,7 @@ function validate_form(){
                                         , FILTER_VALIDATE_FLOAT);
     if ($input['min_price'] === null
                 || $input['min_price'] === false
-                //||$input['min_price'] >= 0
+                ||$input['min_price'] < 0
                 ){
         $errors[] = 'Минимальная цена на блюдо должна быть положительным числом с плавающей точкой.';
     }
@@ -81,7 +82,7 @@ function validate_form(){
                                         , FILTER_VALIDATE_FLOAT);
     if ($input['max_price'] === null
             || $input['max_price'] === false
-            // || $input['max_price'] >= 0*/
+            || $input['max_price'] < 0
             ){
         $errors[] = 'Максимальная цена на блюдо должна быть положительным числом с плавающей точкой.';
     }
@@ -103,6 +104,7 @@ function validate_form(){
 }
 
 function process_form($input){
+
     // получить в этой функции доступ к глобальной переменной $db
     global $db;
 
@@ -152,4 +154,5 @@ function process_form($input){
                             $dish->price, $spicy);
         }
     }
+
 }
